@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {start, pause, reset, refresh, newTimer} from "../actions";
+const alarm = require("../audio/Twin-bell-alarm-clock-ringing-short.mp3");
 
 class Timer extends Component {
     constructor(props) {
@@ -12,13 +13,20 @@ class Timer extends Component {
     }
 
     startStop() {
+        let audio = document.getElementById("beep");
         if (!this.props.running && this.props.timeLeft !== '00:00') {
             this.props.start();
             this.timer = setInterval(() => {
                 if (this.props.timeLeft !== '00:00')
                     this.props.refresh();
-                else
+                else {
+                    audio.play();
+                    setTimeout(() => {
+                        audio.pause();
+                        audio.currentTime = 0;
+                    }, 1000);
                     this.props.newTimer();
+                }
             }, 1000)
         } else {
             this.props.pause();
@@ -27,7 +35,10 @@ class Timer extends Component {
     }
 
     reset() {
+        let audio = document.getElementById("beep");
         this.props.reset();
+        audio.pause();
+        audio.currentTime = 0;
         clearInterval(this.timer);
     }
 
@@ -38,7 +49,10 @@ class Timer extends Component {
                 {this.props.type.replace(/^(\w)/, (p1) => { // Capitalize
                     return p1.toLocaleUpperCase();
                 })}</h1>
-                <div id={"time-left"}>{this.props.timeLeft}</div>
+                <div id={"time-left"}>
+                    {this.props.timeLeft}
+                    <audio id={"beep"} src={alarm}></audio>
+                </div>
                 <button id={"start_stop"} onClick={this.startStop}>Start/Stop</button>
                 <button id={"reset"} onClick={this.reset}>Reset</button>
             </div>
