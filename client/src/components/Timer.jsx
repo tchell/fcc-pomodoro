@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {start, pause, reset, refresh, newTimer} from "../../actions";
+import {start, pause, reset, refresh, newTimer} from "../actions";
 
 class Timer extends Component {
     constructor(props) {
@@ -12,14 +12,14 @@ class Timer extends Component {
     }
 
     startStop() {
-        if (!this.props.running && this.props.timeLeft !== '0:00') {
+        if (!this.props.running && this.props.timeLeft !== '00:00') {
             this.props.start();
             this.timer = setInterval(() => {
-                if (this.props.timeLeft !== '0:00')
+                if (this.props.timeLeft !== '00:00')
                     this.props.refresh();
                 else
                     this.props.newTimer();
-            }, 1000)
+            }, 999)
         } else {
             this.props.pause();
             clearInterval(this.timer);
@@ -34,6 +34,10 @@ class Timer extends Component {
     render() {
         return (
             <div id={"timer"}>
+                <p id={"timer-label"}>
+                {this.props.type.replace(/^(\w)/, (p1) => { // Capitalize
+                    return p1.toLocaleUpperCase();
+                })}</p>
                 <div id={"time-left"}>{this.props.timeLeft}</div>
                 <button id={"start_stop"} onClick={this.startStop}>Start/Stop</button>
                 <button id={"reset"} onClick={this.reset}>Reset</button>
@@ -55,7 +59,9 @@ Timer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-   return state
+   return {
+       ...state,
+   }
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import {Provider} from 'react-redux';
 import '../node_modules/bootstrap/dist/css/bootstrap-reboot.css';
 import './App.sass';
-import Timer from './components/Timer';
 
 import store from './store';
+import Timer from './components/Timer';
+import Type from "./components/Type";
 
 class App extends Component {
   render() {
@@ -12,6 +13,8 @@ class App extends Component {
         <Provider store={store}>
           <div id="App">
               <Timer />
+              <Type name={"break"}/>
+              <Type name={"session"}/>
           </div>
         </Provider>
     );

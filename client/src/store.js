@@ -1,10 +1,10 @@
 import {createStore} from "redux";
 import rootReducer from './reducers';
 
-const initialState = {
-    break: '00:05',
-    session: '00:10',
-    timeLeft: '0:05',
+export const initialState = {
+    break: 5,
+    session: 25,
+    timeLeft: '25:00',
     running: false,
     type: "session",
 };

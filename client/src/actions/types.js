@@ -3,3 +3,5 @@ export const REFRESH = "REFRESH";
 export const PAUSE = "PAUSE";
 export const RESET = "RESET";
 export const NEW_TIMER = "NEW_TIMER";
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
