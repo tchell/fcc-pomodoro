@@ -11,13 +11,16 @@ class App extends Component {
   render() {
     return (
         <Provider store={store}>
-          <div id="App">
-              <Timer />
-              <div id={"work-type"}>
-                  <Type name={"break"}/>
-                  <Type name={"session"}/>
-              </div>
-          </div>
+            <div id="App">
+                <Timer />
+                <div id={"work-type"}>
+                    <Type name={"break"}/>
+                    <Type name={"session"}/>
+                </div>
+            </div>
+            <footer>
+                by <a href="https://github.com/tchell" target="_blank" rel="noopener noreferrer">Tanner Chell</a> | <a href="https://github.com/tchell/fcc-pomodoro" target="_blank" rel="noopener noreferrer">view the code</a>
+            </footer>
         </Provider>
     );
   }
