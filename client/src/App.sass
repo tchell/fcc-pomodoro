@@ -1,6 +1,56 @@
 
+$white: #FFFFFF
+$light: #98BA81
+$medium: #729BAB
+$dark: #8BA0DA
+$black: #1B243A
+
+body
+  background-color: $black
+
 #App
   position: fixed
   top: 33%
   left: 50%
   transform: translate(-50%, -50%)
+  color: $black
+  background-color: $light
+  border-radius: 10px
+  padding: 10px
+  text-align: center
+  button
+    background-color: $dark
+    border: thin solid $black
+    border-radius: 5px
+    margin: 5px
+  button:hover
+    background-color: $medium
+
+#timer
+  *
+    margin: 0 auto
+
+#time-left
+  font-size: 2.3rem
+  margin: 5px auto
+
+#work-type
+  display: grid
+  grid-template-columns: auto auto
+  grid-column-gap: 25px
+  font-size: 1.3rem
+  h1
+    border-bottom: thin solid $black
+    font-size: 1.4rem
+
+#session, #break
+  border: thin solid $black
+  border-radius: 5px
+
+.time-select
+  display: grid
+  grid-template-columns: auto auto auto
+  p
+    margin: 0 20px
+    align-self: center
+

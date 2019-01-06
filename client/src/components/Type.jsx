@@ -20,15 +20,17 @@ class Type extends Component {
 
     render() {
         return (
-            <div>
-                <p id={this.props.name + "-label"}>
+            <div id={this.props.name}>
+                <h1 id={this.props.name + "-label"}>
                     {this.props.name.replace(/^(\w)/, (p1) => { // Capitalize
                         return p1.toLocaleUpperCase();
-                    })} Label</p>
-                <p id={this.props.name + "-length"}>
-                    {(this.props.name === 'session' ? this.props.session : this.props.break)}</p>
-                <button id={this.props.name + "-increment"} onClick={this.handleInc}>+</button>
-                <button id={this.props.name + "-decrement"} onClick={this.handleDec}>-</button>
+                    })}</h1>
+                <div className={"time-select"}>
+                    <button id={this.props.name + "-increment"} onClick={this.handleInc}>+</button>
+                    <p id={this.props.name + "-length"}>
+                        {(this.props.name === 'session' ? this.props.session : this.props.break)}</p>
+                    <button id={this.props.name + "-decrement"} onClick={this.handleDec}>-</button>
+                </div>
             </div>
         )
     }

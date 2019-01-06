@@ -13,8 +13,10 @@ class App extends Component {
         <Provider store={store}>
           <div id="App">
               <Timer />
-              <Type name={"break"}/>
-              <Type name={"session"}/>
+              <div id={"work-type"}>
+                  <Type name={"break"}/>
+                  <Type name={"session"}/>
+              </div>
           </div>
         </Provider>
     );

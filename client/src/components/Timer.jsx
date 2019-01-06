@@ -19,7 +19,7 @@ class Timer extends Component {
                     this.props.refresh();
                 else
                     this.props.newTimer();
-            }, 999)
+            }, 1000)
         } else {
             this.props.pause();
             clearInterval(this.timer);
@@ -34,10 +34,10 @@ class Timer extends Component {
     render() {
         return (
             <div id={"timer"}>
-                <p id={"timer-label"}>
+                <h1 id={"timer-label"}>
                 {this.props.type.replace(/^(\w)/, (p1) => { // Capitalize
                     return p1.toLocaleUpperCase();
-                })}</p>
+                })}</h1>
                 <div id={"time-left"}>{this.props.timeLeft}</div>
                 <button id={"start_stop"} onClick={this.startStop}>Start/Stop</button>
                 <button id={"reset"} onClick={this.reset}>Reset</button>
